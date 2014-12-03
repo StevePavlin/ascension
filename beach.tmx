@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Tiles" tilewidth="32" tileheight="32">
+  <image source="../Downloads/base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="Tiles_1" tilewidth="32" tileheight="32">
+  <image source="../Downloads/terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2049" name="Meta" tilewidth="32" tileheight="32">
+  <image source="../Downloads/TileGameResources/meta_tiles.png" width="67" height="34"/>
+  <tile id="0">
+   <properties>
+    <property name="blocker" value="True"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Background" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJyd08ENwzAIBdAc6k0YhdUqeY50k8SHTtI56khGoogPNIevRJHyjDEebdvGzOfxm9Fqeat09f0y9pnX8igx7Lv2eHnHzKm8qmk9WuZThVtsWm8knoQSF3kSz+SCJ/sVhxNPUq3Pc5CN+tjVunc8eyZ6v3frQ/2ret6caC86By/RnavMn3ZQbWj+IpP/8KqmN9N2XoYxo/khx5G+deBldxmdq7W8GslJtF/koX+9/tu9Rn62tu3j9fwCrSj24A==
+  </data>
+ </layer>
+ <objectgroup name="Collision">
+  <object name="blocker" gid="2049" x="190" y="96"/>
+  <object name="blocker" gid="2049" x="188" y="36"/>
+  <object name="blocker" gid="2049" x="189" y="67"/>
+  <object name="blocker" gid="2049" x="192" y="128"/>
+  <object name="blocker" gid="2049" x="225" y="124"/>
+  <object name="blocker" gid="2049" x="255" y="162"/>
+  <object name="blocker" gid="2049" x="287" y="195"/>
+  <object name="blocker" gid="2049" x="285" y="225"/>
+  <object name="blocker" gid="2049" x="325" y="220"/>
+  <object name="blocker" gid="2049" x="358" y="228"/>
+  <object name="blocker" gid="2049" x="382" y="250"/>
+  <object name="blocker" gid="2049" x="386" y="279"/>
+  <object name="blocker" gid="2049" x="382" y="325"/>
+  <object name="blocker" gid="2049" x="385" y="360"/>
+  <object name="blocker" gid="2049" x="378" y="378"/>
+  <object name="blocker" gid="2049" x="367" y="396"/>
+  <object name="blocker" gid="2049" x="338" y="414"/>
+  <object name="blocker" gid="2049" x="331" y="437"/>
+  <object name="blocker" gid="2049" x="369" y="473"/>
+  <object name="blocker" gid="2049" x="353" y="490"/>
+  <object name="blocker" gid="2049" x="354" y="514"/>
+  <object name="blocker" gid="2049" x="355" y="548"/>
+  <object name="blocker" gid="2049" x="342" y="552"/>
+  <object name="blocker" gid="2049" x="310" y="556"/>
+  <object name="blocker" gid="2049" x="283" y="545"/>
+  <object name="blocker" gid="2049" x="260" y="556"/>
+  <object name="blocker" gid="2049" x="228" y="554"/>
+  <object name="blocker" gid="2049" x="198" y="551"/>
+  <object name="blocker" gid="2049" x="197" y="550"/>
+  <object name="blocker" gid="2049" x="174" y="545"/>
+  <object name="blocker" gid="2049" x="169" y="531"/>
+  <object name="blocker" gid="2049" x="135" y="509"/>
+  <object name="blocker" gid="2049" x="131" y="496"/>
+  <object name="blocker" gid="2049" x="109" y="467"/>
+  <object name="blocker" gid="2049" x="77" y="423"/>
+  <object name="blocker" gid="2049" x="59" y="411"/>
+  <object name="blocker" gid="2049" x="52" y="391"/>
+  <object name="blocker" gid="2049" x="40" y="352"/>
+  <object name="blocker" gid="2049" x="34" y="297"/>
+  <object name="blocker" gid="2049" x="39" y="284"/>
+  <object name="blocker" gid="2049" x="40" y="256"/>
+  <object name="blocker" gid="2049" x="43" y="234"/>
+  <object name="blocker" gid="2049" x="53" y="294"/>
+  <object name="blocker" gid="2049" x="46" y="309"/>
+  <object name="blocker" gid="2049" x="85" y="201"/>
+  <object name="blocker" gid="2049" x="79" y="216"/>
+  <object name="blocker" gid="2049" x="119" y="198"/>
+  <object name="blocker" gid="2049" x="76" y="159"/>
+  <object name="blocker" gid="2049" x="77" y="144"/>
+  <object name="blocker" gid="2049" x="62" y="113"/>
+  <object name="blocker" gid="2049" x="55" y="92"/>
+  <object name="blocker" gid="2049" x="51" y="55"/>
+  <object name="blocker" gid="2049" x="45" y="14"/>
+  <object name="blocker" gid="2049" x="97" y="35"/>
+  <object name="blocker" gid="2049" x="150" y="31"/>
+  <object name="blocker" gid="2049" x="152" y="32"/>
+  <object name="blocker" gid="2049" x="123" y="30"/>
+  <object name="blocker" gid="2049" x="75" y="19"/>
+ </objectgroup>
+</map>

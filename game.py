@@ -1,7 +1,7 @@
 from pytmx import *
 import pygame
 import time
-
+import os
 
 ############## Globals #################
 pygame.init()
@@ -16,9 +16,9 @@ imagerect = image.get_rect()
 
 clock = pygame.time.Clock()
 
-#pygame.mixer.music.load('theme.ogg')
-#pygame.mixer.music.set_endevent(pygame.constants.USEREVENT)
-#pygame.mixer.music.play()
+pygame.mixer.music.load('music/kairi.ogg')
+pygame.mixer.music.set_endevent(pygame.constants.USEREVENT)
+pygame.mixer.music.play()
 ########################################
 
 
@@ -159,16 +159,39 @@ class Map(object):
         self.blockers = blockers 
 
 
+class Music(object):
+
+    def __init__(self):
+        self.musicList = os.listdir("music")
+        self.currentSong = 0
+
+    def play(self):
+        
+        pygame.mixer.music.load("music/" + self.musicList[self.currentSong])
+        pygame.mixer.music.play()
+        self.currentSong += 1
+
+        if self.currentSong == len(self.musicList) + 1:
+            # Repeat the songs
+            self.currentSong = 0
+
+
+    def playSong(fileName):
+        pass
+
 player = Player()
 mapOne = Map()
+music = Music()
+
 while 1:
     clock.tick(60)
-        
+    pygame.display.set_caption("Ascension | " + "FPS " + str(int(clock.get_fps())))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
    
         elif event.type == pygame.constants.USEREVENT: 
-            pygame.mixer.music.play()
+            music.play()
 
     keys = pygame.key.get_pressed()
     player.update(keys)

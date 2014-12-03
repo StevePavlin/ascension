@@ -10,7 +10,7 @@ size = width, height = 608, 608
 screen = pygame.display.set_mode(size)
 black = 0, 0, 0
 
-tmxdata = load_pygame("map.tmx", pixelalpha=True)
+tmxdata = load_pygame("mapnew.tmx", pixelalpha=True)
 image = tmxdata.get_tile_image(7, 0, 0)
 imagerect = image.get_rect()
 
@@ -66,7 +66,8 @@ class Player(object):
             # They are walking
             self.currentImage = 1
 
-        screen.blit(self.images, (self.rect.x, self.rect.y), (self.currentImage * 32, actions[self.direction], imageDimensions, imageDimensions))
+
+        screen.blit(self.images, (self.rect.x + mapOne.cameraX, self.rect.y + mapOne.cameraY), (self.currentImage * 32, actions[self.direction], imageDimensions, imageDimensions))
          
     def update(self, keys):
 
@@ -99,20 +100,22 @@ class Player(object):
         else:
             self.isWalking = False
         
-        print(self.rect.x) 
+        mapOne.cameraX += self.xVel * -1        
         self.rect.x += self.xVel
         for blocker in mapOne.blockers:
             if self.rect.colliderect(blocker):
                 self.rect.x -= self.xVel
+                mapOne.cameraX -= self.xVel * -1
                 self.xVel = 0
 
+        mapOne.cameraY += self.yVel * -1
         self.rect.y += self.yVel
         for blocker in mapOne.blockers:
             if self.rect.colliderect(blocker):
                 self.rect.y -= self.yVel
+                mapOne.cameraY -= self.yVel * -1    
                 self.yVel = 0
-
-        
+                       
         
         
          
@@ -121,18 +124,20 @@ class Map(object):
     def __init__(self):
         self.blockers = None
         self.findObstacles()
+        self.cameraX = 0
+        self.cameraY = 0
 
 
     def draw(self, layers):
         
         # Assuming draw order for layers is 0, 1, 2 etc.
         for layer in layers:
-            for x in range(0, 19):
-                for y in range(0, 19):
+            for x in range(0, 39):
+                for y in range(0, 39):
                     image = tmxdata.get_tile_image(x, y, layer)
                     
                     if image:
-                        screen.blit(image, (x * 32, y * 32))
+                        screen.blit(image, (x * 32 + self.cameraX, y * 32 + self.cameraY))
                    
     def findObstacles(self):
         blockers = []

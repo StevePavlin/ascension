@@ -1228,6 +1228,6 @@
   </data>
  </layer>
  <objectgroup name="Collision">
-  <object x="287" y="354" width="127" height="60"/>
+  <object name="blocker" x="287" y="354" width="127" height="60"/>
  </objectgroup>
 </map>

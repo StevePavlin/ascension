@@ -10,11 +10,15 @@ size = width, height = 608, 608
 screen = pygame.display.set_mode(size)
 black = 0, 0, 0
 
-tmxdata = load_pygame("map.tmx")
+tmxdata = load_pygame("map.tmx", pixelalpha=True)
 image = tmxdata.get_tile_image(7, 0, 0)
 imagerect = image.get_rect()
 
 clock = pygame.time.Clock()
+
+#pygame.mixer.music.load('theme.ogg')
+#pygame.mixer.music.set_endevent(pygame.constants.USEREVENT)
+#pygame.mixer.music.play()
 ########################################
 
 
@@ -22,13 +26,19 @@ class Player(object):
 
     def __init__(self):
         self.images = pygame.image.load("sheet.png")
-        self.x = 256
-        self.y = 256
+        
+        
+        self.xVel = 2
+        self.yVel = 2        
+
         self.direction = "up"
         self.currentImage = 1
         self.maxImage = 2
         self.speed = 50
         self.isWalking = True
+        
+        # Much staticness very rect
+        self.rect = pygame.Rect(256, 256, 32, 32)
 
     def draw(self):
         imageDimensions = 32
@@ -56,17 +66,61 @@ class Player(object):
             # They are walking
             self.currentImage = 1
 
-        screen.blit(self.images, (self.x, self.y), (self.currentImage * 32, actions[self.direction], imageDimensions, imageDimensions))
+        screen.blit(self.images, (self.rect.x, self.rect.y), (self.currentImage * 32, actions[self.direction], imageDimensions, imageDimensions))
          
-            
-       
+    def update(self, keys):
+
+        # Cap velocity
+        
+        
+        if keys[pygame.K_DOWN]: 
+            self.direction = "down"
+            self.yVel = 3
+
+        elif keys[pygame.K_UP]: 
+            self.direction = "up"
+            self.yVel = -3
+        else:
+            self.yVel = 0
+
+        if keys[pygame.K_LEFT]:
+            self.direction = "left"
+            self.xVel = -3
+        
+        elif keys[pygame.K_RIGHT]: 
+            self.direction = "right"
+            self.xVel = 3
+        
+        else:
+            self.xVel = 0
+        
+        if keys[pygame.K_UP] != 0 or keys[pygame.K_DOWN] != 0 or keys[pygame.K_LEFT] != 0 or keys[pygame.K_RIGHT] != 0:
+            self.isWalking = True
+        else:
+            self.isWalking = False
+        
+        print(self.rect.x) 
+        self.rect.x += self.xVel
+        for blocker in mapOne.blockers:
+            if self.rect.colliderect(blocker):
+                self.rect.x -= self.xVel
+                self.xVel = 0
+
+        self.rect.y += self.yVel
+        for blocker in mapOne.blockers:
+            if self.rect.colliderect(blocker):
+                self.rect.y -= self.yVel
+                self.yVel = 0
+
+        
+        
+        
          
-
-
 class Map(object):
     
     def __init__(self):
-        pass
+        self.blockers = None
+        self.findObstacles()
 
 
     def draw(self, layers):
@@ -80,6 +134,25 @@ class Map(object):
                     if image:
                         screen.blit(image, (x * 32, y * 32))
                    
+    def findObstacles(self):
+        blockers = []
+ 
+        obstacleLayer = tmxdata.get_layer_by_name("Collision")
+     
+        for tile_object in obstacleLayer:
+            properties = tile_object.__dict__
+            
+            if properties['name'] == 'blocker':
+                x = properties['x'] 
+                y = properties['y']
+                width = properties['width']
+                height = properties['height']
+                new_rect = pygame.Rect(x, y, width, height)
+            
+                blockers.append(new_rect)
+        
+        self.blockers = blockers 
+
 
 player = Player()
 mapOne = Map()
@@ -88,38 +161,21 @@ while 1:
         
     for event in pygame.event.get():
         if event.type == pygame.QUIT: sys.exit()
-    
+   
+        elif event.type == pygame.constants.USEREVENT: 
+            pygame.mixer.music.play()
+
     keys = pygame.key.get_pressed()
-
-    if keys[pygame.K_DOWN]: 
-        player.direction = "down"
-        player.y += 2
-        
-    if keys[pygame.K_UP]: 
-        player.direction = "up"
-        player.y -= 2
-        
-    if keys[pygame.K_LEFT]: 
-        player.direction = "left"
-        player.x -= 2
+    player.update(keys)
     
-    if keys[pygame.K_RIGHT]: 
-        player.direction = "right"
-        player.x += 2
-
     
-    if keys[pygame.K_UP] != 0 or keys[pygame.K_DOWN] != 0 or keys[pygame.K_LEFT] != 0 or keys[pygame.K_RIGHT] != 0:
-        player.isWalking = True
-    else:
-        player.isWalking = False
-
     # Reset the screen
     screen.fill(black)
     # Draw the world
     mapOne.draw([0, 1])
     player.draw()
     mapOne.draw([2])
-
+   
     
 
     # DEBUG

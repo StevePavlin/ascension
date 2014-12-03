@@ -10,7 +10,7 @@ size = width, height = 608, 608
 screen = pygame.display.set_mode(size)
 black = 0, 0, 0
 
-tmxdata = load_pygame("mapnew.tmx", pixelalpha=True)
+tmxdata = load_pygame("map/mapnew.tmx", pixelalpha=True)
 image = tmxdata.get_tile_image(7, 0, 0)
 imagerect = image.get_rect()
 
@@ -25,7 +25,7 @@ pygame.mixer.music.play()
 class Player(object):
 
     def __init__(self):
-        self.images = pygame.image.load("sheet.png")
+        self.images = pygame.image.load("map/sheet.png")
         
         
         self.xVel = 2

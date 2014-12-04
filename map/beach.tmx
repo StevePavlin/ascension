@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Tiles" tilewidth="32" tileheight="32">
-  <image source="../Downloads/base_out_atlas.png" width="1024" height="1024"/>
+  <image source="../../Downloads/base_out_atlas.png" width="1024" height="1024"/>
  </tileset>
  <tileset firstgid="1025" name="Tiles_1" tilewidth="32" tileheight="32">
-  <image source="../Downloads/terrain_atlas.png" width="1024" height="1024"/>
+  <image source="../../Downloads/terrain_atlas.png" width="1024" height="1024"/>
  </tileset>
  <tileset firstgid="2049" name="Meta" tilewidth="32" tileheight="32">
-  <image source="../Downloads/TileGameResources/meta_tiles.png" width="67" height="34"/>
+  <image source="../../Downloads/TileGameResources/meta_tiles.png" width="67" height="34"/>
   <tile id="0">
    <properties>
     <property name="blocker" value="True"/>
    </properties>
   </tile>
  </tileset>
- <layer name="Background" width="20" height="20">
+ <layer name="Background" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJyd08ENwzAIBdAc6k0YhdUqeY50k8SHTtI56khGoogPNIevRJHyjDEebdvGzOfxm9Fqeat09f0y9pnX8igx7Lv2eHnHzKm8qmk9WuZThVtsWm8knoQSF3kSz+SCJ/sVhxNPUq3Pc5CN+tjVunc8eyZ6v3frQ/2ret6caC86By/RnavMn3ZQbWj+IpP/8KqmN9N2XoYxo/khx5G+deBldxmdq7W8GslJtF/koX+9/tu9Rn62tu3j9fwCrSj24A==
+   eJzFllGOwjAMRPnY3CRH4WorcQ72JpCPnIRzUKRa8o5sx06d8jFqKWnyOp64beVyaZteP//Vik+d6ea8JzI3nX+Y7pv+dr7qvK+z4yq+68732PRkfF7G1Xx1Z/xluhabEfnayXykWsZensFHkhjJy9FcmXw0H3ERg8ZHOss//rwal8aq5XAFH/kyw4d7ZJYPs0G/eX1n/cvIXyaf1FckL6W1PP93uGbtC0naGhqf1zvk59dqGWdQ8kjjXcHnYfT6mZFBZP4mI2ZOyyvxaYwVasuV0fssNo+HFcZn++h5Ru5hFYTjsffwPmF5wWvr9W+UWU3Ih9/TeI5HiSvS762xveg5RFapT3p9PiJkjD6fNDbze22WT+onK/h4BiVGj39dGJ9dc8zhzBrYq7OzOOOhpBV8xIB82G++xYc5ktb03ruq38zwjXp1JpvUzyL+jdh4/8nwMeKJtSbOc5Qv4kmDtW/smsaXlbvIc2Kvljgi70qtjpYnEbaIT9J7yFNHzROsI9Y0ew9r+9biOItPq6O1Jt6jKds/KdsakzUui8uTzZW+HGUbZWmlfx62EVMfzPcG+gN4ew==
   </data>
  </layer>
  <objectgroup name="Collision">
@@ -37,9 +37,6 @@
   <object name="blocker" gid="2049" x="378" y="378"/>
   <object name="blocker" gid="2049" x="367" y="396"/>
   <object name="blocker" gid="2049" x="338" y="414"/>
-  <object name="blocker" gid="2049" x="331" y="437"/>
-  <object name="blocker" gid="2049" x="369" y="473"/>
-  <object name="blocker" gid="2049" x="353" y="490"/>
   <object name="blocker" gid="2049" x="354" y="514"/>
   <object name="blocker" gid="2049" x="355" y="548"/>
   <object name="blocker" gid="2049" x="342" y="552"/>
@@ -78,5 +75,53 @@
   <object name="blocker" gid="2049" x="152" y="32"/>
   <object name="blocker" gid="2049" x="123" y="30"/>
   <object name="blocker" gid="2049" x="75" y="19"/>
+  <object name="blocker" gid="2049" x="378" y="378"/>
+  <object name="blocker" gid="2049" x="405" y="406"/>
+  <object name="blocker" gid="2049" x="404" y="404"/>
+  <object name="blocker" gid="2049" x="464" y="408"/>
+  <object name="blocker" gid="2049" x="472" y="412"/>
+  <object name="blocker" gid="2049" x="506" y="419"/>
+  <object name="blocker" gid="2049" x="535" y="436"/>
+  <object name="blocker" gid="2049" x="565" y="456"/>
+  <object name="blocker" gid="2049" x="577" y="476"/>
+  <object name="blocker" gid="2049" x="608" y="523"/>
+  <object name="blocker" gid="2049" x="660" y="565"/>
+  <object name="blocker" gid="2049" x="670" y="577"/>
+  <object name="blocker" gid="2049" x="657" y="579"/>
+  <object name="blocker" gid="2049" x="623" y="520"/>
+  <object name="blocker" gid="2049" x="632" y="533"/>
+  <object name="blocker" gid="2049" x="662" y="584"/>
+  <object name="blocker" gid="2049" x="681" y="632"/>
+  <object name="blocker" gid="2049" x="696" y="685"/>
+  <object name="blocker" gid="2049" x="712" y="729"/>
+  <object name="blocker" gid="2049" x="712" y="729"/>
+  <object name="blocker" gid="2049" x="765" y="794"/>
+  <object name="blocker" gid="2049" x="767" y="810"/>
+  <object name="blocker" gid="2049" x="747" y="789"/>
+  <object name="blocker" gid="2049" x="721" y="752"/>
+  <object name="blocker" gid="2049" x="725" y="751"/>
+  <object name="blocker" gid="2049" x="762" y="810"/>
+  <object name="blocker" gid="2049" x="753" y="882"/>
+  <object name="blocker" gid="2049" x="654" y="839"/>
+  <object name="blocker" gid="2049" x="577" y="774"/>
+  <object name="blocker" gid="2049" x="514" y="709"/>
+  <object name="blocker" gid="2049" x="507" y="691"/>
+  <object name="blocker" gid="2049" x="493" y="662"/>
+  <object name="blocker" gid="2049" x="472" y="635"/>
+  <object name="blocker" gid="2049" x="454" y="615"/>
+  <object name="blocker" gid="2049" x="431" y="574"/>
+  <object name="blocker" gid="2049" x="426" y="569"/>
+  <object name="blocker" gid="2049" x="365" y="498"/>
+  <object name="blocker" gid="2049" x="401" y="526"/>
  </objectgroup>
+ <layer name="Foreground" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+  </data>
+ </layer>
+ <layer name="Top" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztwQENAAAAwqD3T20PBxQAAAAAAMCXARkAAAE=
+  </data>
+ </layer>
 </map>

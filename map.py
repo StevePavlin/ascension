@@ -14,17 +14,13 @@ class MapManager(object):
         self.mapObject = mapObject
         self.screen = pygame.display.get_surface()
     
-        self.maxX = self.getCurrentMap().maxX
-        self.maxY = self.getCurrentMap().maxY
-
     def getCurrentMap(self):
         return self.mapObject
 
     def setCurrentMap(self, mapObject):
         self.mapObject = mapObject
-
+    
     def createNewMap(self, fileName, songName):
-        # TODO Dont hardcode song
         return Map(fileName, songName)
 
     def draw(self, drawnPlayer):
@@ -34,12 +30,13 @@ class MapManager(object):
         else:
             layers = [2, 3]
 
+
         for layer in range(layers[0], layers[1]):
             # Loop through x and y tiles and draw the layers
-            for x in range(0, self.maxX):
-                for y in range(0, self.maxY):
-                    image = self.getCurrentMap().tmxData.get_tile_image(x, y, layer)
-
+            for x in range(0, self.mapObject.maxX + 1):
+                for y in range(0, self.mapObject.maxY + 1):
+                    image = self.mapObject.tmxData.get_tile_image(x, y, layer)
+                    
                     # Make sure the image isnt null
 
                     if image:
@@ -86,8 +83,6 @@ class Map(object):
         
         music.setCurrentSong(self.song)
 
-        print(self.portals)
-
     # Sets the max x and max y block
     def getMaxBlocks(self): 
         temp = self.tmxData.get_layer_by_name("Background")
@@ -97,8 +92,8 @@ class Map(object):
         
         self.maxX = tile[0]
         self.maxY = tile[1]
-        
-        print(self.maxX)
+       
+       
 
                   
     def findObstacles(self):
@@ -127,7 +122,8 @@ class Map(object):
 
         for tile_object in obstacleLayer:
             properties = tile_object.__dict__
-            
+            print(properties)
+
             if properties['name'] == 'portal':
                 
                 mapFile = properties['properties']['goto']
@@ -139,13 +135,12 @@ class Map(object):
                 newRect = pygame.Rect(x, y, width, height)
 
                 temp = [newRect, mapFile, songFile]
-                print(temp)
                 portals.append(temp)
 
         self.portals = portals
-        print(self.portals)
+        #print(self.portals)
         
-mapOne = Map('mapnew.tmx', 'intro')
+mapOne = Map('forest.tmx', 'kairi')
 mapMgr = MapManager(mapOne)
 
 mapMgr.setCurrentMap(mapOne)

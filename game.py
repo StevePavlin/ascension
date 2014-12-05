@@ -19,7 +19,7 @@ class Game(object):
         self.screen = pygame.display.set_mode(SIZE)
         self.clock = pygame.time.Clock()
         
-                
+
 
         # Start the loop
         self.running = True
@@ -40,17 +40,15 @@ class Game(object):
 
 
             keys = pygame.key.get_pressed()
-            player.update(keys)
-            
-            
+                        
             # Reset the screen
             self.screen.fill(BLACK)
             # Draw the world
             mapMgr.draw(drawnPlayer = False)
             player.draw()
-            mapMgr.draw(drawnPlayer = True)
-           
+            mapMgr.draw(drawnPlayer = True) 
             
+            player.update(keys)
 
             # DEBUG
 

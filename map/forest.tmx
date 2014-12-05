@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="images" tilewidth="32" tileheight="32">
+  <image source="terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="images1" tilewidth="32" tileheight="32">
+  <image source="base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="2049" name="Meta" tilewidth="32" tileheight="32">
+  <image source="meta_tiles.png" width="67" height="34"/>
+ </tileset>
+ <layer name="Background" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJytVVuOgzAQA4k90x6y9ykcb5eqLdHIr0n7ERWaMPE4tnMsy3I8x/1/7OC5/jfOqe/S99vPNc6523qNI9xrXHOO31UPhanWdPgQR6/nWruueeGpcymnI7bHWDE+Vo9xqPZ3dRh3DJ+rpzA6/Apjgk/th/ZAvynGfbt+R4y11jiQR1OM7fntGkd5P0fFxjSPfKE4RP3S+a3UMviY71X+MR0ynJVHNP/GWdaw72YxKgyuh7pv5dBlndJZipHNofd7mWPffRNjMofwKY2nfpnBqM4LYXL6TjhEGN0dxLw0e+9+gnEGH9KG0yJ7Vr5O+GMY0LPTneLQ9ZFoGPnTaZz1odZ1sTLeO5p0+7vv2F71bByHszx8gpHlSqf/qhuXJajXDr6OT1ROuLzr6Amde5qHSa8s85wnFTesR8VTJ3eSzFDZyf5TulP8u9xOzt/5QnlZYUi98g19MnzoV/Wi8pLpjfWccuj4Y98kedbJvySvkzNWGnS6YJngOOzcM4ln0bm4PVyN9H5QPbB1rE4HI1urPJ/00Kmn9IC8mzynuZnmT+LL5M5Lzi7RkeK2y2EHX+ITlZedjFZZw7SrPJpkuNO8ywuHY1YLqk71Drsr03NIz9n5S9336O5PdebuPJWFHYwzXv0DVlpuNA==
+  </data>
+ </layer>
+ <layer name="Foreground" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztlktOwzAQhl1BlGPALVhCjwEsgGMAC1izgiWwgDWI1wZuAOLRB5cA8WjLEfijEJhY9ngmCRUS/qRPVepJ+9ceO22nxrS/vIV38B4+wA7swh7skzrba3jDjIc8SYw5hWdJfl0w0TJmJf3xBb7CN/gOB3AIR/AjLddSn+AzMx6yg1xd2Evya5qPMtNyO4WxacPXUmi9a7x4byvJrwd4HcJRUq6z8/m+exbvzblLv+spdr3rd9B8dqYily8f/cyMJbisyOert3+3K58Umm8DbiruldYfId+x5aXJlWbMOICHinzS+qvJssbo8mmZhwtwUXGPNp9rrxZsYz53mJ5dhWtw3TEmyS6ZO26vniPbBZNvF+7BfccYl10Dt1f7yPbI5OPgsmuQ7j2uD34Tuve4nvH1gSZ3qJ9DcD3j6wNN7lA/h+B6xtcHmtx1+jmE7wzW5h432txNU+UZkaF9RrqQ7L2mztkqhP7nZTR1zlZB0sO+Oa667hokPeyb43Gsu6SHfXMsXfc6zwzJGtU9J+o8MyRrVPec+Av/gSKRSCQSiUT+M5/yRITi
+  </data>
+ </layer>
+ <layer name="Top" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztw0EJAAAIBLCzfxRL+hYsIGywBPiiawcAAAAA4DZTMwKx
+  </data>
+ </layer>
+ <objectgroup name="Collision">
+  <object name="blocker" gid="2049" x="865" y="320"/>
+  <object name="blocker" gid="2049" x="865" y="320"/>
+  <object gid="2049" x="638" y="289"/>
+  <object name="blocker" gid="2049" x="865" y="320"/>
+  <object gid="2049" x="417" y="609"/>
+  <object gid="2049" x="417" y="609"/>
+  <object gid="2049" x="256" y="450"/>
+  <object gid="2049" x="256" y="450"/>
+  <object gid="2049" x="610" y="706"/>
+  <object gid="2049" x="610" y="706"/>
+  <object gid="2049" x="125" y="799"/>
+  <object name="portal" gid="2050" x="543" y="69">
+   <properties>
+    <property name="goto" value="room.tmx"/>
+    <property name="song" value="kairi"/>
+   </properties>
+  </object>
+  <object name="portal" gid="2050" x="575" y="69">
+   <properties>
+    <property name="goto" value="room.tmx"/>
+    <property name="song" value="kairi"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

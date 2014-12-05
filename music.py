@@ -20,6 +20,7 @@ class Music(object):
     def play(self):
         pygame.mixer.music.load(MUSIC_DIR + self.currentSong)
         pygame.mixer.music.play()
-        
+        pass
+
 music = Music()
 

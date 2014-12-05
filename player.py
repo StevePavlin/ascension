@@ -2,12 +2,11 @@ from constants import *
 from map import Map, mapMgr
 import pygame
 
-
 class Player(object):
 
     def __init__(self):
         self.images = pygame.image.load(MAP_DIR + "sheet.png")
-
+        
         # Player velocities
         self.xVel = 2
         self.yVel = 2        
@@ -17,7 +16,7 @@ class Player(object):
         self.maxImage = 2
         self.speed = 50
         self.isWalking = True
-        
+
         # Current map were drawing on
         self.currentMap = mapMgr.getCurrentMap()
         # Much staticness very rect
@@ -52,19 +51,8 @@ class Player(object):
 
 
         self.screen.blit(self.images, (self.rect.x + mapMgr.getCurrentMap().cameraX, self.rect.y + mapMgr.getCurrentMap().cameraY), (self.currentImage * 32, actions[self.direction], imageDimensions, imageDimensions))
-
+   
     def updateCamera(self): 
-
-    
-        """
-        print('___CAMERA-DEBUG___')
-        print('---Camera---')
-        print(self.currentMap.cameraX)
-        print(self.currentMap.cameraY)
-        print('---Player---')
-        print(self.rect.x)
-        print(self.rect.y)
-        """
 
         cameraBoundX = SIZE[0] / 2
         cameraBoundY = SIZE[1] / 2
@@ -121,7 +109,10 @@ class Player(object):
                 tempMap = mapMgr.createNewMap(goto, song)
                 mapMgr.setCurrentMap(tempMap)
                 self.currentMap = mapMgr.getCurrentMap()
-                             
+                
+                # Put player in entrance
+                self.rect.x = SIZE[0] / 2
+                self.rect.y = SIZE[1] / 2
 
     def update(self, keys):
 
@@ -144,16 +135,16 @@ class Player(object):
         elif keys[pygame.K_RIGHT]: 
             self.direction = "right"
             self.xVel = 3
-        
         else:
             self.xVel = 0
-        
+       
         if keys[pygame.K_UP] != 0 or keys[pygame.K_DOWN] != 0 or keys[pygame.K_LEFT] != 0 or keys[pygame.K_RIGHT] != 0:
             self.isWalking = True
         else:
             self.isWalking = False
-
+        
         # Move the camera accordingly
         self.updateCamera()
+
 
 player = Player()

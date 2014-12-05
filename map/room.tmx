@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="terrain_atlas" tilewidth="32" tileheight="32">
+  <image source="terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="meta_tiles" tilewidth="32" tileheight="32">
+  <image source="meta_tiles.png" width="67" height="34"/>
+ </tileset>
+ <tileset firstgid="1027" name="base_out_atlas" tilewidth="32" tileheight="32">
+  <image source="base_out_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <layer name="Background" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYMANJjExMExmwqRBmBwwat6oeaPmjZo3CoYPAAAgXTjh
+  </data>
+ </layer>
+ <layer name="Foreground" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYMANrrMyMEwD4m9IeA0LA8N9Njya8IDvQP3b0Mw7AzTvP5nmhePQh0uc3uatY8KNR8EoGAWjYKgDABHzEr8=
+  </data>
+ </layer>
+ <layer name="Top" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAeXGMlQTER4BuVzRsFo2CgwCYmBobNTNQz7xLQrMtUNG8UjAJaAAB0CwTp
+  </data>
+ </layer>
+ <objectgroup name="Collision">
+  <object name="blocker" x="229" y="146" width="222" height="30"/>
+  <object name="blocker" x="435" y="-3" width="29" height="447"/>
+  <object name="blocker" x="207" y="3" width="33" height="449"/>
+  <object name="blocker" x="193" y="418" width="287" height="24"/>
+  <object x="473" y="221" width="1" height="2"/>
+  <object name="portal" gid="1026" x="352" y="385">
+   <properties>
+    <property name="goto" value="forest.tmx"/>
+    <property name="song" value="battle"/>
+   </properties>
+  </object>
+  <object name="portal" gid="1026" x="318" y="383">
+   <properties>
+    <property name="goto" value="forest.tmx"/>
+    <property name="song" value="battle"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

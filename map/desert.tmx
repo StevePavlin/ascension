@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="40" height="40" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="background1" tilewidth="32" tileheight="32">
+  <image source="terrain_atlas.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="1025" name="Meta" tilewidth="32" tileheight="32">
+  <image source="meta_tiles.png" width="67" height="34"/>
+ </tileset>
+ <layer name="Background" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJzt0k0OgkAMhuFmbi/IQUQ5CAoH8e8OfotJ3JSF05K4eJ/k2zQDmWlr9nUoZp3SK0dlKO0178y1WMhJ34/KWbkoU2mveWcewfvN9Y03ZVHW0l7bo3+Z8x126F/mfCenx/0fzXet/XoqL+Vd7x5xd/7ZWps37hyRvX9eLSJ7/7xaRPb+Zc83c/+2agAAAAAAAMAvPtgqxnA=
+  </data>
+ </layer>
+ <layer name="Foreground" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztzsENQFAURNH3FYFaUQeCOlAJKsHSlCDh/7zFPcms55rF0wazTutDxJMPZnUt2uq0b1PXrh1O+051XdrttC/PzAqtzNL+VvqrtSbx71uDukZtctoHAAAAAAAAAH94APZBDPo=
+  </data>
+ </layer>
+ <layer name="Top" width="40" height="40">
+  <data encoding="base64" compression="zlib">
+   eJztzsENgCAABMGDOsBK1EqA/otAwxXAW0jcSfa/Er7Wg/S4N6w+mUtRyu6Iq0/mTn9d7t70r/irurbpHwAAAAAAAAD8wQAMDAUy
+  </data>
+ </layer>
+ <objectgroup name="Collision" width="40" height="40">
+  <object name="blocker" gid="1025" x="450" y="200"/>
+  <object name="blocker" gid="1025" x="450" y="200"/>
+  <object gid="1025" x="481" y="197"/>
+  <object gid="1025" x="481" y="197"/>
+  <object gid="1025" x="422" y="200"/>
+  <object gid="1025" x="422" y="200"/>
+  <object gid="1025" x="428" y="194"/>
+  <object gid="1025" x="420" y="194"/>
+  <object gid="1025" x="487" y="190"/>
+  <object name="portal" gid="1026" x="863" y="31">
+   <properties>
+    <property name="goto" value="mapnew.tmx"/>
+    <property name="song" value="xion"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

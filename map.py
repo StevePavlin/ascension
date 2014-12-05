@@ -23,9 +23,9 @@ class MapManager(object):
     def setCurrentMap(self, mapObject):
         self.mapObject = mapObject
 
-    def createNewMap(self, fileName):
+    def createNewMap(self, fileName, songName):
         # TODO Dont hardcode song
-        return Map(fileName, 'roxas')
+        return Map(fileName, songName)
 
     def draw(self, drawnPlayer):
         # First draw the background and foreground
@@ -127,19 +127,23 @@ class Map(object):
 
         for tile_object in obstacleLayer:
             properties = tile_object.__dict__
-             
+            
             if properties['name'] == 'portal':
+                
                 mapFile = properties['properties']['goto']
+                songFile = properties['properties']['song']
                 x = properties['x']
                 y = properties['y']
                 width = properties['width']
                 height = properties['height']
                 newRect = pygame.Rect(x, y, width, height)
 
-                temp = [newRect, mapFile]
+                temp = [newRect, mapFile, songFile]
+                print(temp)
                 portals.append(temp)
 
         self.portals = portals
+        print(self.portals)
         
 mapOne = Map('mapnew.tmx', 'intro')
 mapMgr = MapManager(mapOne)

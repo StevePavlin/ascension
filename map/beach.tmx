@@ -109,9 +109,10 @@
   <object name="blocker" gid="2049" x="426" y="569"/>
   <object name="blocker" gid="2049" x="365" y="498"/>
   <object name="blocker" gid="2049" x="401" y="526"/>
-  <object name="portal" gid="2050" x="97" y="95">
+  <object name="portal" gid="2050" x="112" y="88">
    <properties>
     <property name="goto" value="mapnew.tmx"/>
+    <property name="song" value="kairi"/>
    </properties>
   </object>
  </objectgroup>

@@ -115,9 +115,10 @@ class Player(object):
         for portal in self.currentMap.portals:
             rect = portal[0]
             goto = portal[1]
-            
+            song = portal[2]
+
             if self.rect.colliderect(rect):
-                tempMap = mapMgr.createNewMap(goto)
+                tempMap = mapMgr.createNewMap(goto, song)
                 mapMgr.setCurrentMap(tempMap)
                 self.currentMap = mapMgr.getCurrentMap()
                              

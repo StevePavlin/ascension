@@ -1,5 +1,5 @@
 from constants import *
-from map import mapMgr
+from map import Map, mapMgr
 import pygame
 
 
@@ -55,6 +55,8 @@ class Player(object):
 
     def updateCamera(self): 
 
+    
+        """
         print('___CAMERA-DEBUG___')
         print('---Camera---')
         print(self.currentMap.cameraX)
@@ -62,15 +64,12 @@ class Player(object):
         print('---Player---')
         print(self.rect.x)
         print(self.rect.y)
-        
+        """
+
         cameraBoundX = SIZE[0] / 2
         cameraBoundY = SIZE[1] / 2
 
-        print(int(self.currentMap.maxXBound * 2 - cameraBoundX))
-        print(self.currentMap.maxXBound * 2)
-        print(self.rect.x > self.currentMap.maxXBound * 2 - cameraBoundX and self.rect.x < self.currentMap.maxXBound * 2)
-
-
+        
         # Test for camera boundaries and adjust it accordingly
         if self.currentMap.cameraX > 0:
             self.currentMap.cameraX = 0
@@ -110,7 +109,18 @@ class Player(object):
                 self.rect.y -= self.yVel
                 self.currentMap.cameraY -= self.yVel * -1    
                 self.yVel = 0
-
+        
+        # Test for portals TODO move this out of there later
+        #for portal in self.currentMap.portals:
+        for portal in self.currentMap.portals:
+            rect = portal[0]
+            goto = portal[1]
+            
+            if self.rect.colliderect(rect):
+                tempMap = mapMgr.createNewMap(goto)
+                mapMgr.setCurrentMap(tempMap)
+                self.currentMap = mapMgr.getCurrentMap()
+                             
 
     def update(self, keys):
 

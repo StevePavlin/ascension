@@ -76,10 +76,6 @@
   <object name="blocker" gid="2049" x="123" y="30"/>
   <object name="blocker" gid="2049" x="75" y="19"/>
   <object name="blocker" gid="2049" x="378" y="378"/>
-  <object name="blocker" gid="2049" x="405" y="406"/>
-  <object name="blocker" gid="2049" x="404" y="404"/>
-  <object name="blocker" gid="2049" x="464" y="408"/>
-  <object name="blocker" gid="2049" x="472" y="412"/>
   <object name="blocker" gid="2049" x="506" y="419"/>
   <object name="blocker" gid="2049" x="535" y="436"/>
   <object name="blocker" gid="2049" x="565" y="456"/>
@@ -113,6 +109,11 @@
   <object name="blocker" gid="2049" x="426" y="569"/>
   <object name="blocker" gid="2049" x="365" y="498"/>
   <object name="blocker" gid="2049" x="401" y="526"/>
+  <object name="portal" gid="2050" x="97" y="95">
+   <properties>
+    <property name="goto" value="mapnew.tmx"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Foreground" width="40" height="40">
   <data encoding="base64" compression="zlib">

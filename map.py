@@ -23,6 +23,10 @@ class MapManager(object):
     def setCurrentMap(self, mapObject):
         self.mapObject = mapObject
 
+    def createNewMap(self, fileName):
+        # TODO Dont hardcode song
+        return Map(fileName, 'roxas')
+
     def draw(self, drawnPlayer):
         # First draw the background and foreground
         if not drawnPlayer:
@@ -57,6 +61,7 @@ class Map(object):
     
     def __init__(self, fileName, songName):
         self.blockers = None
+        self.portals = None
  
         self.cameraX = 0
         self.cameraY = 0
@@ -70,6 +75,7 @@ class Map(object):
         self.song = songName 
 
         self.findObstacles()
+        self.findPortals()
         self.getMaxBlocks()
         
         # Use the bounds to set the camera properly
@@ -79,6 +85,8 @@ class Map(object):
 
         
         music.setCurrentSong(self.song)
+
+        print(self.portals)
 
     # Sets the max x and max y block
     def getMaxBlocks(self): 
@@ -106,12 +114,33 @@ class Map(object):
                 y = properties['y']
                 width = properties['width']
                 height = properties['height']
-                new_rect = pygame.Rect(x, y, width, height)
+                newRect = pygame.Rect(x, y, width, height)
             
-                blockers.append(new_rect)
+                blockers.append(newRect)
         
         self.blockers = blockers 
 
+    def findPortals(self):
+        portals = []
+
+        obstacleLayer = self.tmxData.get_layer_by_name("Collision")
+
+        for tile_object in obstacleLayer:
+            properties = tile_object.__dict__
+             
+            if properties['name'] == 'portal':
+                mapFile = properties['properties']['goto']
+                x = properties['x']
+                y = properties['y']
+                width = properties['width']
+                height = properties['height']
+                newRect = pygame.Rect(x, y, width, height)
+
+                temp = [newRect, mapFile]
+                portals.append(temp)
+
+        self.portals = portals
+        
 mapOne = Map('mapnew.tmx', 'intro')
 mapMgr = MapManager(mapOne)
 

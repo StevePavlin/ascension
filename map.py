@@ -1,6 +1,7 @@
 import pygame
 from pytmx import *
 from constants import *
+from music import *
 
 
 """
@@ -54,8 +55,9 @@ Use Tiled (http://mapeditor.org) to build these maps
 """
 class Map(object):
     
-    def __init__(self, fileName):
+    def __init__(self, fileName, songName):
         self.blockers = None
+ 
         self.cameraX = 0
         self.cameraY = 0
 
@@ -65,8 +67,18 @@ class Map(object):
         self.maxX = None
         self.maxY = None
 
+        self.song = songName 
+
         self.findObstacles()
         self.getMaxBlocks()
+        
+        # Use the bounds to set the camera properly
+        self.maxXBound = int((self.maxX * 32) / 2)
+        self.maxYBound = int((self.maxY * 32) / 2)
+
+
+        
+        music.setCurrentSong(self.song)
 
     # Sets the max x and max y block
     def getMaxBlocks(self): 
@@ -100,7 +112,7 @@ class Map(object):
         
         self.blockers = blockers 
 
-mapOne = Map('mapnew.tmx')
+mapOne = Map('mapnew.tmx', 'intro')
 mapMgr = MapManager(mapOne)
 
 mapMgr.setCurrentMap(mapOne)

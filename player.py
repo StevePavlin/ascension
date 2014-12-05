@@ -7,8 +7,8 @@ class Player(object):
 
     def __init__(self):
         self.images = pygame.image.load(MAP_DIR + "sheet.png")
-        
-        
+
+        # Player velocities
         self.xVel = 2
         self.yVel = 2        
 
@@ -18,6 +18,8 @@ class Player(object):
         self.speed = 50
         self.isWalking = True
         
+        # Current map were drawing on
+        self.currentMap = mapMgr.getCurrentMap()
         # Much staticness very rect
         self.rect = pygame.Rect(256, 256, 32, 32)
 
@@ -50,11 +52,69 @@ class Player(object):
 
 
         self.screen.blit(self.images, (self.rect.x + mapMgr.getCurrentMap().cameraX, self.rect.y + mapMgr.getCurrentMap().cameraY), (self.currentImage * 32, actions[self.direction], imageDimensions, imageDimensions))
+
+    def updateCamera(self): 
+
+        print('___CAMERA-DEBUG___')
+        print('---Camera---')
+        print(self.currentMap.cameraX)
+        print(self.currentMap.cameraY)
+        print('---Player---')
+        print(self.rect.x)
+        print(self.rect.y)
+        
+        cameraBoundX = SIZE[0] / 2
+        cameraBoundY = SIZE[1] / 2
+
+        print(int(self.currentMap.maxXBound * 2 - cameraBoundX))
+        print(self.currentMap.maxXBound * 2)
+        print(self.rect.x > self.currentMap.maxXBound * 2 - cameraBoundX and self.rect.x < self.currentMap.maxXBound * 2)
+
+
+        # Test for camera boundaries and adjust it accordingly
+        if self.currentMap.cameraX > 0:
+            self.currentMap.cameraX = 0
+
+        elif self.currentMap.cameraX < self.currentMap.maxXBound * -1:
+            self.currentMap.cameraX = self.currentMap.maxXBound * -1
+                     
+        if (self.rect.x > 0 and self.rect.x < cameraBoundX) or (self.rect.x > self.currentMap.maxXBound * 2 - cameraBoundX and self.rect.x < self.currentMap.maxXBound * 2):
+            # Do not move camera, player is at a bound
+            pass
+        else:
+            self.currentMap.cameraX += self.xVel * -1       
          
+        if self.currentMap.cameraY > 0:
+            self.currentMap.cameraY = 0
+
+        elif self.currentMap.cameraY < self.currentMap.maxYBound * -1:
+            self.currentMap.cameraY = self.currentMap.maxYBound * -1
+                     
+        if (self.rect.y > 0 and self.rect.y < cameraBoundY) or (self.rect.y > self.currentMap.maxYBound * 2 - cameraBoundY and self.rect.y < self.currentMap.maxYBound * 2):
+                # Do not move camera, player is at a bound
+            pass
+        else:
+            self.currentMap.cameraY += self.yVel * -1       
+        
+
+        self.rect.x += self.xVel     
+        self.rect.y += self.yVel
+
+        # Test for blockers
+        for blocker in mapMgr.getCurrentMap().blockers:
+            if self.rect.colliderect(blocker):
+                self.rect.x -= self.xVel
+                self.currentMap.cameraX -= self.xVel * -1
+                self.xVel = 0
+                
+                self.rect.y -= self.yVel
+                self.currentMap.cameraY -= self.yVel * -1    
+                self.yVel = 0
+
+
     def update(self, keys):
 
-        # Cap velocity
-        
+        # Movement modifiers
         
         if keys[pygame.K_DOWN]: 
             self.direction = "down"
@@ -81,21 +141,8 @@ class Player(object):
             self.isWalking = True
         else:
             self.isWalking = False
-        
-        mapMgr.getCurrentMap().cameraX += self.xVel * -1        
-        self.rect.x += self.xVel
-        for blocker in mapMgr.getCurrentMap().blockers:
-            if self.rect.colliderect(blocker):
-                self.rect.x -= self.xVel
-                mapMgr.getCurrentMap().cameraX -= self.xVel * -1
-                self.xVel = 0
 
-        mapMgr.getCurrentMap().cameraY += self.yVel * -1
-        self.rect.y += self.yVel
-        for blocker in mapMgr.getCurrentMap().blockers:
-            if self.rect.colliderect(blocker):
-                self.rect.y -= self.yVel
-                mapMgr.getCurrentMap().cameraY -= self.yVel * -1    
-                self.yVel = 0
+        # Move the camera accordingly
+        self.updateCamera()
 
 player = Player()

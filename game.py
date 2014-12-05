@@ -35,7 +35,6 @@ class Game(object):
                 if event.type == pygame.QUIT: sys.exit()
            
                 elif event.type == pygame.constants.USEREVENT: 
-                    print('event')
                     music.play()
                     
 

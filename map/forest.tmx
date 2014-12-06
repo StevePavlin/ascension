@@ -16,37 +16,22 @@
  </layer>
  <layer name="Foreground" width="40" height="40">
   <data encoding="base64" compression="zlib">
-   eJztlktOwzAQhl1BlGPALVhCjwEsgGMAC1izgiWwgDWI1wZuAOLRB5cA8WjLEfijEJhY9ngmCRUS/qRPVepJ+9ceO22nxrS/vIV38B4+wA7swh7skzrba3jDjIc8SYw5hWdJfl0w0TJmJf3xBb7CN/gOB3AIR/AjLddSn+AzMx6yg1xd2Evya5qPMtNyO4WxacPXUmi9a7x4byvJrwd4HcJRUq6z8/m+exbvzblLv+spdr3rd9B8dqYily8f/cyMJbisyOert3+3K58Umm8DbiruldYfId+x5aXJlWbMOICHinzS+qvJssbo8mmZhwtwUXGPNp9rrxZsYz53mJ5dhWtw3TEmyS6ZO26vniPbBZNvF+7BfccYl10Dt1f7yPbI5OPgsmuQ7j2uD34Tuve4nvH1gSZ3qJ9DcD3j6wNN7lA/h+B6xtcHmtx1+jmE7wzW5h432txNU+UZkaF9RrqQ7L2mztkqhP7nZTR1zlZB0sO+Oa667hokPeyb43Gsu6SHfXMsXfc6zwzJGtU9J+o8MyRrVPec+Av/gSKRSCQSiUT+M5/yRITi
+   eJztlktOwzAURd2EKEti3KWwDUCCGYgJc0CCMQg6YwlUfNqwAmAE4tOWFQA3SqK+Ws/PjpNGqPKRjvJz7NvEz2k/Vapfegvv4D18gCM4hhl8JO2ohz2lbrAdlvtcG5uXiVJXcJAUxxUx+ttI577DD/gJv+AETuEMfqeLbSsH6OMV27dyn2tjc4RcY5glxTHNR1nv8XJU1zK4Fym1HxX7pnbcuYOkOJ5gO4WzZLGdns+U00aVzwTXF82nZ6py6fmeYqWe4Uvsns0lH5fTlE/iB7l+oVpbTj6dc/R/oXmtCl2Q8m0izxbcjub56LkmuOaTOEKGY3hC8tFzdK7UzVY33w7cFa5z75fOFZc+fLPlnMIzwzXb+uLShysuv5HDpz58xtJ/o+sc8snXxvPU5xBlmfXbBrb6/U/4rs918ZmzrvXbxni+c1Z6flKGNmrENkaOlK+tDBLcGKtav77fAJd+TOu16f1y7X2/ATrcO+XWa6l+pfW9TpucJs+9i/WvSZ11tT7XYVXr17cepPubrgn0fp//1RSunpp+A6T7u/i+BAKBQCAQqMcfZJu6sA==
   </data>
  </layer>
- <layer name="Top" width="40" height="40">
+ <layer name="Top" width="40" height="40" opacity="0.97">
   <data encoding="base64" compression="zlib">
-   eJztw0EJAAAIBLCzfxRL+hYsIGywBPiiawcAAAAA4DZTMwKx
+   eJztlssNwjAMhpN2DV6D8BqE10ZsANw5sAEwGCDcAyJEtpM4acvBn2SpsuTYSfM7NkYpxaE25gh2qvuuBOcKdd3A7hH1PawxT7CX5X19MaiMGYKNKt7XBWOwieebQg0zsHmF+/y7gq1BcbZfi2EBtvR8K6hhDbapcJ9/V7A1UqH2uAXbETF7+2sU/hop5/lBsseLxb/byOXvkes3ufrl/kksXL/5J/1ihPTbBil3NqTf0vkaJHc2pF+uhtR81J3lcoT0y9VQQiNUjlj9lqqBA8sh1a+kL0vWkeq3xDtHreP26xj9Yv095Q1w8c8L+6dYv+b0GzNPxs6c0nOXvr+ppOpM5+d4JPMzFZ8zV2PxDZL52cWNz52rMT3lvgFcfBfvi6IoiqIoSpe8AVcIbKM=
   </data>
  </layer>
  <objectgroup name="Collision">
-  <object name="blocker" gid="2049" x="865" y="320"/>
-  <object name="blocker" gid="2049" x="865" y="320"/>
-  <object gid="2049" x="638" y="289"/>
-  <object name="blocker" gid="2049" x="865" y="320"/>
-  <object gid="2049" x="417" y="609"/>
-  <object gid="2049" x="417" y="609"/>
-  <object gid="2049" x="256" y="450"/>
-  <object gid="2049" x="256" y="450"/>
-  <object gid="2049" x="610" y="706"/>
-  <object gid="2049" x="610" y="706"/>
-  <object gid="2049" x="125" y="799"/>
-  <object name="portal" gid="2050" x="543" y="69">
+  <object name="blocker" x="13" y="4" width="530" height="58"/>
+  <object name="portal" x="559" y="2" width="33" height="51">
    <properties>
     <property name="goto" value="room.tmx"/>
-    <property name="song" value="kairi"/>
+    <property name="song" value="roxas"/>
    </properties>
   </object>
-  <object name="portal" gid="2050" x="575" y="69">
-   <properties>
-    <property name="goto" value="room.tmx"/>
-    <property name="song" value="kairi"/>
-   </properties>
-  </object>
+  <object name="blocker" x="488" y="198" width="17" height="25"/>
  </objectgroup>
 </map>

@@ -54,9 +54,27 @@ class Player(object):
    
     def updateCamera(self): 
 
+
+        self.rect.x += self.xVel     
+        self.rect.y += self.yVel
+
+        colliding = False
+        # Test for blockers
+        for blocker in mapMgr.getCurrentMap().blockers:
+            if self.rect.colliderect(blocker):
+                self.rect.x -= self.xVel
+                self.xVel = 0
+                
+                self.rect.y -= self.yVel
+                self.yVel = 0
+               
+                colliding = True
+       
+
         cameraBoundX = SIZE[0] / 2
         cameraBoundY = SIZE[1] / 2
-
+    
+        #print('player x: ' + str(self.rect.x) + ' player y: ' + str(self.rect.y))
         
         # Test for camera boundaries and adjust it accordingly
         if self.currentMap.cameraX > 0:
@@ -68,9 +86,12 @@ class Player(object):
         if (self.rect.x > 0 and self.rect.x < cameraBoundX) or (self.rect.x > self.currentMap.maxXBound * 2 - cameraBoundX and self.rect.x < self.currentMap.maxXBound * 2):
             # Do not move camera, player is at a bound
             pass
+        elif not colliding:
+            self.currentMap.cameraX += self.xVel * -1     
         else:
-            self.currentMap.cameraX += self.xVel * -1       
-         
+            pass
+
+
         if self.currentMap.cameraY > 0:
             self.currentMap.cameraY = 0
 
@@ -80,39 +101,10 @@ class Player(object):
         if (self.rect.y > 0 and self.rect.y < cameraBoundY) or (self.rect.y > self.currentMap.maxYBound * 2 - cameraBoundY and self.rect.y < self.currentMap.maxYBound * 2):
                 # Do not move camera, player is at a bound
             pass
+        elif not colliding:
+            self.currentMap.cameraY += self.yVel * -1  
         else:
-            self.currentMap.cameraY += self.yVel * -1       
-        
-
-        self.rect.x += self.xVel     
-        self.rect.y += self.yVel
-
-        # Test for blockers
-        for blocker in mapMgr.getCurrentMap().blockers:
-            if self.rect.colliderect(blocker):
-                self.rect.x -= self.xVel
-                self.currentMap.cameraX -= self.xVel * -1
-                self.xVel = 0
-                
-                self.rect.y -= self.yVel
-                self.currentMap.cameraY -= self.yVel * -1    
-                self.yVel = 0
-        
-        # Test for portals TODO move this out of there later
-        #for portal in self.currentMap.portals:
-        for portal in self.currentMap.portals:
-            rect = portal[0]
-            goto = portal[1]
-            song = portal[2]
-
-            if self.rect.colliderect(rect):
-                tempMap = mapMgr.createNewMap(goto, song)
-                mapMgr.setCurrentMap(tempMap)
-                self.currentMap = mapMgr.getCurrentMap()
-                
-                # Put player in entrance
-                self.rect.x = SIZE[0] / 2
-                self.rect.y = SIZE[1] / 2
+            pass
 
     def update(self, keys):
 
@@ -145,6 +137,23 @@ class Player(object):
         
         # Move the camera accordingly
         self.updateCamera()
+
+ 
+        # Test for portals
+        for portal in self.currentMap.portals:
+            rect = portal[0]
+            goto = portal[1]
+            song = portal[2]
+
+            if self.rect.colliderect(rect):
+                tempMap = mapMgr.createNewMap(goto, song)
+                mapMgr.setCurrentMap(tempMap)
+                self.currentMap = mapMgr.getCurrentMap()
+                
+                # Put player in entrance
+                self.rect.x = SIZE[0] / 2
+                self.rect.y = SIZE[1] / 2
+
 
 
 player = Player()

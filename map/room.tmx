@@ -21,25 +21,19 @@
  </layer>
  <layer name="Top" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYCAeXGMlQTER4BuVzRsFo2CgwCYmBobNTNQz7xLQrMtUNG8UjAJaAAB0CwTp
+   eJxjYCAeXGMlQTER4BuVzRsFo2AUYAdqVM5rbqN5dxQAAQDeOQJN
   </data>
  </layer>
  <objectgroup name="Collision">
   <object name="blocker" x="229" y="146" width="222" height="30"/>
-  <object name="blocker" x="435" y="-3" width="29" height="447"/>
-  <object name="blocker" x="207" y="3" width="33" height="449"/>
-  <object name="blocker" x="193" y="418" width="287" height="24"/>
+  <object name="blocker" x="449" y="-4" width="29" height="447"/>
+  <object name="blocker" x="190" y="-2" width="33" height="449"/>
+  <object name="blocker" x="194" y="449" width="287" height="24"/>
   <object x="473" y="221" width="1" height="2"/>
-  <object name="portal" gid="1026" x="352" y="385">
+  <object name="portal" x="321" y="418" width="31" height="26">
    <properties>
     <property name="goto" value="forest.tmx"/>
-    <property name="song" value="battle"/>
-   </properties>
-  </object>
-  <object name="portal" gid="1026" x="318" y="383">
-   <properties>
-    <property name="goto" value="forest.tmx"/>
-    <property name="song" value="battle"/>
+    <property name="song" value="intro"/>
    </properties>
   </object>
  </objectgroup>

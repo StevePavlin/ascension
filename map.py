@@ -21,6 +21,7 @@ class MapManager(object):
         self.mapObject = mapObject
     
     def createNewMap(self, fileName, songName):
+        #TODO Create enter/exit locations?
         return Map(fileName, songName)
 
     def draw(self, drawnPlayer):
@@ -60,9 +61,6 @@ class Map(object):
         self.blockers = None
         self.portals = None
  
-        self.cameraX = 0
-        self.cameraY = 0
-
         self.fileName = fileName
         self.tmxData = load_pygame(MAP_DIR + fileName, pixelalpha=True)
 
@@ -78,6 +76,10 @@ class Map(object):
         # Use the bounds to set the camera properly
         self.maxXBound = int((self.maxX * 32) / 2)
         self.maxYBound = int((self.maxY * 32) / 2)
+
+
+        self.cameraX = 0
+        self.cameraY = 0
 
 
         

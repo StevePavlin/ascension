@@ -3,7 +3,6 @@ from pytmx import *
 from constants import *
 from music import *
 
-
 """
 MapManager class used to track the current map being drawn and draw it
 """
@@ -85,6 +84,21 @@ class Map(object):
         
         music.setCurrentSong(self.song)
 
+
+    # Returns the XY coordinates of the door
+    def getDoorXY(self):
+        col = self.tmxData.get_layer_by_name("Collision")
+
+        for tile in col:
+            properties = tile.__dict__
+            
+            if properties['name'] == 'portal':
+                x = properties['x'] 
+                y = properties['y']
+
+        return x, y
+ 
+
     # Sets the max x and max y block
     def getMaxBlocks(self): 
         temp = self.tmxData.get_layer_by_name("Background")
@@ -124,7 +138,7 @@ class Map(object):
 
         for tile_object in obstacleLayer:
             properties = tile_object.__dict__
-            print(properties)
+            
 
             if properties['name'] == 'portal':
                 

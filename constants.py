@@ -2,6 +2,7 @@ import pygame
 
 # Game wide constants
 SIZE = WIDTH, HEIGHT = 608, 608
+SIZE_REAL = WIDTH, HEIGHT = 908, 908
 
 # Colors
 BLACK = 0, 0, 0

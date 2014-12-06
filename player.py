@@ -1,5 +1,5 @@
 from constants import *
-from map import Map, mapMgr
+from map import mapMgr
 import pygame
 
 class Player(object):
@@ -20,7 +20,12 @@ class Player(object):
         # Current map were drawing on
         self.currentMap = mapMgr.getCurrentMap()
         # Much staticness very rect
-        self.rect = pygame.Rect(256, 256, 32, 32)
+        self.rect = pygame.Rect(559, 796, 32, 32)
+        
+        self.currentMap.cameraX = -1 * (559 - SIZE[0] / 2)
+        self.currentMap.cameraY = -1 * (796 - SIZE[1] / 2)
+
+
 
         self.screen = pygame.display.get_surface()
 
@@ -107,9 +112,17 @@ class Player(object):
             pass
 
     def update(self, keys):
-
-        # Movement modifiers
+        # TODO Make a class for this
+        dimage = pygame.image.load(MAP_DIR + 'dialoguebox.png')
+        dimagerect = dimage.get_rect()
         
+        dimagerect.x -= 100
+        dimagerect.y = 500
+        
+        
+
+        self.screen.blit(dimage, dimagerect)
+        # Movement modifiers        
         if keys[pygame.K_DOWN]: 
             self.direction = "down"
             self.yVel = 3
@@ -129,6 +142,11 @@ class Player(object):
             self.xVel = 3
         else:
             self.xVel = 0
+
+        if keys[pygame.K_SPACE]:
+            
+            self.currentMap.cameraX -= 5
+            #self.currentMap.cameraY += 5
        
         if keys[pygame.K_UP] != 0 or keys[pygame.K_DOWN] != 0 or keys[pygame.K_LEFT] != 0 or keys[pygame.K_RIGHT] != 0:
             self.isWalking = True
@@ -138,7 +156,8 @@ class Player(object):
         # Move the camera accordingly
         self.updateCamera()
 
- 
+        print(self.currentMap.cameraX, self.currentMap. cameraY)
+        print(self.rect.x, self.rect.y) 
         # Test for portals
         for portal in self.currentMap.portals:
             rect = portal[0]
@@ -150,9 +169,18 @@ class Player(object):
                 mapMgr.setCurrentMap(tempMap)
                 self.currentMap = mapMgr.getCurrentMap()
                 
+                door = mapMgr.getCurrentMap().getDoorXY()
                 # Put player in entrance
-                self.rect.x = SIZE[0] / 2
-                self.rect.y = SIZE[1] / 2
+                self.rect.x = door[0]
+               
+                print(keys[pygame.K_UP])
+                # Achieves the exit door affect
+                if keys[pygame.K_UP]: self.rect.y = door[1] - 75
+                elif keys[pygame.K_DOWN]: self.rect.y = door[1] + 75
+               
+                # Move the camera to the door
+                self.currentMap.cameraX = -1 * (self.rect.x - SIZE[0] / 2)
+                self.currentMap.cameraY = -1 * (self.rect.y - SIZE[1] / 2)
 
 
 

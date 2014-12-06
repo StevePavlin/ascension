@@ -14,11 +14,15 @@ class Game(object):
         self.tmxdata = None
         self.clock = None
     
+        self.dialogue = None
+
+
     def setup(self):
         pygame.init()
         self.screen = pygame.display.set_mode(SIZE)
         self.clock = pygame.time.Clock()
-        
+        pygame.display.set_caption("Ascension")
+
 
 
         # Start the loop
@@ -29,8 +33,7 @@ class Game(object):
         while self.running:
                        
             self.clock.tick(60)
-            pygame.display.set_caption("Ascension | " + "FPS " + str(int(self.clock.get_fps())))
-
+            
             for event in pygame.event.get():
                 if event.type == pygame.QUIT: sys.exit()
            
